@@ -1,0 +1,103 @@
+.icon {
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	background: no-repeat center;
+	vertical-align: middle;
+
+	&-search {
+		background-image: url('../../assets/images/ic-search.svg');
+	}
+
+	&-cart {
+		background-image: url('../../assets/images/ic-cart.svg');
+	}
+
+	&-profile {
+		background-image: url('../../assets/images/ic-avatar.svg');
+	}
+
+	&-arrow {
+		width: 36px;
+		height: 36px;
+		margin-right: 12px;
+		background-image: url('../../assets/images/ic-arrow.svg');
+		border-radius: 50%;
+	}
+
+	&-freeship {
+		background-image: url('../../assets/images/ic-freeship-fill.svg');
+	}
+	&-satisfied {
+		background-image: url('../../assets/images/ic-satisfied-fill.svg');
+	}
+	&-guaranteed {
+		background-image: url('../../assets/images/ic-guaranteed-fill.svg');
+	}
+
+	&.icon {
+		&-info {
+			width: 70px;
+			height: 70px;
+			&.icon-freeship {
+				background: url('../../assets/images/ic-freeship.svg') no-repeat;
+			}
+			&.icon-payment {
+				background: url('../../assets/images/ic-payment.svg') no-repeat;
+			}
+			&.icon-guaranteed {
+				background: url('../../assets/images/ic-guaranteed.svg') no-repeat;
+				background-size: cover;
+			}
+
+			&.icon-quality {
+				background: url('../../assets/images/ic-quality.svg') no-repeat;
+				background-size: cover;
+			}
+		}
+	}
+
+	&-facebook {
+		background-image: url('../../assets/images/ic-fb.svg');
+	}
+
+	&-twitter {
+		background-image: url('../../assets/images/ic-twitter.svg');
+	}
+
+	&-linkedin {
+		background-image: url('../../assets/images/ic-linkedin.svg');
+	}
+
+	&-instagram {
+		background-image: url('../../assets/images/ic-insta.svg');
+	}
+
+	&-youtube {
+		background-image: url('../../assets/images/ic-youtube.svg');
+	}
+
+	&-cart-sm {
+		background: url('../../assets/images/ic-cart-sm.svg') no-repeat;
+	}
+
+	&-profile-sm {
+		background: url('../../assets/images/ic-profile-sm.svg') no-repeat;
+	}
+	&-menu-sm {
+		background: url('../../assets/images/ic-menu.svg') no-repeat;
+	}
+}
+
+[class$='-sm'] {
+	display: none;
+}
+@media only screen and (max-width: 768px) {
+	[class$='-lg'] {
+		display: none;
+	}
+
+	[class$='-sm'] {
+		display: block;
+	}
+}
