@@ -1,15 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
 import './stylesheets/style.scss'
 import Header from './app/shared/components/Header';
 import Footer from './app/shared/components/Footer';
+import Home from './app/pages/home/Home';
+
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Header/>
+      <Home/>
       <Footer/>
-    </div>
+    </>
   );
 }
 
