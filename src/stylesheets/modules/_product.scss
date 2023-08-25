@@ -51,7 +51,7 @@
 		color: map-get($map: $color, $key: light);
 		cursor: pointer;
 	}
-	&.available:hover {
+	&:hover {
 		.product-link {
 			opacity: 0.5;
 		}

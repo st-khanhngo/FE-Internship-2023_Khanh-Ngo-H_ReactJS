@@ -1,17 +1,26 @@
-import './stylesheets/style.scss'
-import Header from './app/shared/components/Header';
-import Footer from './app/shared/components/Footer';
-import Home from './app/pages/home/Home';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ReactDOM from 'react-dom/client';
 
+import './stylesheets/style.scss';
+import Header from './app/shared/components/Header';
+import Home from './app/pages/home/Home';
+import Cart from './app/pages/cart/Cart';
 
 function App() {
-  return (
-    <>
-      <Header/>
-      <Home/>
-      <Footer/>
-    </>
-  );
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route
+					path='/'
+					element={<Home />}
+				></Route>
+				<Route
+					path='/cart'
+					element={<Cart />}
+				></Route>
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;
