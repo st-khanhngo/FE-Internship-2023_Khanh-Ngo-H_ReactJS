@@ -1,13 +1,16 @@
 import { Outlet, Link } from 'react-router-dom';
 import logo from '../../../assets/images/shop-logo.png';
+import { CartProps } from '../../models/cart.interface';
+import Carts from '../../models/carts.entity';
 
 interface Props {
-	props: string;
+	headerType: string;
+	cartList: Carts;
 }
 
-const Header = ({ props }: Props) => {
+const Header = ({ headerType, cartList }: Props) => {
 	return (
-		<header className={`header ${props}`}>
+		<header className={`header ${headerType}`}>
 			<div className='container flex'>
 				<h1 className='header-logo'>
 					<Link
@@ -72,7 +75,11 @@ const Header = ({ props }: Props) => {
 						>
 							<i className='icon icon-cart icon-lg'></i>
 							<i className='icon icon-profile-sm'></i>
-							<span className='badge badge-danger badge-cart'></span>
+							{cartList.cart.length > 0 && (
+								<span className='badge badge-danger badge-cart'>
+									{cartList.cartTotalItem()}
+								</span>
+							)}
 						</Link>
 					</li>
 					<li className='action-item'>

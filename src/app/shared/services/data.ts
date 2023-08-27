@@ -2,9 +2,8 @@ import product1 from '../../../assets/images/product-1.png';
 import product2 from '../../../assets/images/product-2.png';
 import product3 from '../../../assets/images/product-3.png';
 import product4 from '../../../assets/images/product-4.png';
-import Product from './Product';
 
-const products = [
+export const products = [
 	{
 		id: 1,
 		name: 'T-Shirt Summer Vibes',
@@ -34,18 +33,3 @@ const products = [
 		discount: 0,
 	},
 ];
-
-const ProductList = () => {
-	return (
-		<ul className='product-list row'>
-			{products.map((product) => (
-				<Product
-					key={product.id}
-					{...product}
-				/>
-			))}
-		</ul>
-	);
-};
-
-export default ProductList;

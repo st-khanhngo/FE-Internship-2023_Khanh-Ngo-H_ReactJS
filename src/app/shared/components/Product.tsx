@@ -1,44 +1,14 @@
 import { useState, useEffect } from 'react';
 import { StorageKeys, getLocalStorage } from '../services/localStorage';
+import { ProductProps } from '../../models/product.interface';
 
-interface ProductProps {
-	id: number;
-	name: string;
-	image: string;
-	discount: number;
-	price: number;
+interface Props {
+	product: ProductProps;
+	addToCart: any;
 }
 
-const Product = ({ id, name, image, discount, price }: ProductProps) => {
-	const product = { id, name, image, discount, price };
-	const [cart, setCart]: any = useState([]);
-
-	useEffect(() => {
-		const cartList = getLocalStorage(StorageKeys.CART);
-		if (cartList) {
-			setCart(cartList);
-		}
-		console.log(1);
-	}, []);
-
-	const addToCart = (
-		e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-		product: ProductProps
-	) => {
-		e.preventDefault();
-		if (cart?.length) {
-			const cartExisted = cart.find((item: any) => item.id === product.id);
-			if (!cartExisted) {
-				setCart([...cart, { ...product, quantity: 1 }]);
-				console.log(cart, product);
-			} else {
-				console.log('add');
-			}
-		} else {
-			setCart([{ ...product, quantity: 1 }]);
-		}
-		localStorage.setItem('cart', JSON.stringify(cart));
-	};
+const Product = ({ product, addToCart }: Props) => {
+	const { id, name, image, discount, price } = product;
 
 	return (
 		<li className='product-item col col-3 col-sm-6'>
