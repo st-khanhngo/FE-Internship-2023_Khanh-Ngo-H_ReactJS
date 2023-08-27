@@ -1,3 +1,6 @@
+import { useState, useEffect } from 'react';
+import { StorageKeys, getLocalStorage } from '../services/localStorage';
+
 interface ProductProps {
 	id: number;
 	name: string;
@@ -7,12 +10,42 @@ interface ProductProps {
 }
 
 const Product = ({ id, name, image, discount, price }: ProductProps) => {
+	const product = { id, name, image, discount, price };
+	const [cart, setCart]: any = useState([]);
+
+	useEffect(() => {
+		const cartList = getLocalStorage(StorageKeys.CART);
+		if (cartList) {
+			setCart(cartList);
+		}
+		console.log(1);
+	}, []);
+
+	const addToCart = (
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+		product: ProductProps
+	) => {
+		e.preventDefault();
+		if (cart?.length) {
+			const cartExisted = cart.find((item: any) => item.id === product.id);
+			if (!cartExisted) {
+				setCart([...cart, { ...product, quantity: 1 }]);
+				console.log(cart, product);
+			} else {
+				console.log('add');
+			}
+		} else {
+			setCart([{ ...product, quantity: 1 }]);
+		}
+		localStorage.setItem('cart', JSON.stringify(cart));
+	};
+
 	return (
 		<li className='product-item col col-3 col-sm-6'>
 			<div className={`product ${discount > 0 && 'product-discount'}`}>
 				<button
 					className='btn btn-primary btn-cart ${product.status}'
-					data-index={id}
+					onClick={(e) => addToCart(e, product)}
 				>
 					ADD TO CART
 				</button>
