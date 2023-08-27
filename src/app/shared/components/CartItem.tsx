@@ -3,8 +3,8 @@ import CartProps from '../../models/cart.interface';
 
 interface Props {
 	cart: CartProps;
-	changeCartQuantity: any;
-	deleteCartItem: any;
+	changeCartQuantity: Function;
+	deleteCartItem: Function;
 }
 
 export const CartItem = ({

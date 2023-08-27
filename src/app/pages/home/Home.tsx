@@ -32,7 +32,7 @@ const Home = () => {
 		product: ProductProps
 	): void => {
 		e.preventDefault();
-		const cartExisted = cart.find((item: any) => item.id === product.id);
+		const cartExisted = cart.find((item: CartProps) => item.id === product.id);
 		if (!cartExisted) {
 			setCart([...cart, { ...product, quantity: 1 }]);
 		} else {

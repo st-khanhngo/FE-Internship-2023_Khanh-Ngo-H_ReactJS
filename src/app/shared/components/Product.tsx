@@ -2,7 +2,7 @@ import ProductProps from '../../models/product.interface';
 
 interface Props {
 	product: ProductProps;
-	addToCart: any;
+	addToCart: Function;
 }
 
 export const Product = ({ product, addToCart }: Props) => {
