@@ -1,4 +1,4 @@
-import { CartProps } from "./cart.interface";
+import CartProps from "./cart.interface";
 
 class Cart implements CartProps {
   quantity: number;

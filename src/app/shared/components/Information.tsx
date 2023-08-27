@@ -25,7 +25,7 @@ const infoList = [
 	},
 ];
 
-const Information = () => {
+export const Information = () => {
 	return (
 		<section className='section section-info'>
 			<div className='container'>
@@ -54,5 +54,3 @@ const Information = () => {
 		</section>
 	);
 };
-
-export default Information;

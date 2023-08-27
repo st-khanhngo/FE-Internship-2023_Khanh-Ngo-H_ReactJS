@@ -1,4 +1,4 @@
-import {ProductProps} from "./product.interface.js";
+import ProductProps from "./product.interface.js";
 
 class Product implements ProductProps {
   id: number;

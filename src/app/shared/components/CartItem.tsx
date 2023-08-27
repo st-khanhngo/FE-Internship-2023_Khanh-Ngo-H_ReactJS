@@ -1,5 +1,5 @@
 import Cart from '../../models/cart.entity';
-import { CartProps } from '../../models/cart.interface';
+import CartProps from '../../models/cart.interface';
 
 interface Props {
 	cart: CartProps;
@@ -7,7 +7,11 @@ interface Props {
 	deleteCartItem: any;
 }
 
-const CartItem = ({ cart, changeCartQuantity, deleteCartItem }: Props) => {
+export const CartItem = ({
+	cart,
+	changeCartQuantity,
+	deleteCartItem,
+}: Props) => {
 	const {
 		id,
 		name,
@@ -24,12 +28,13 @@ const CartItem = ({ cart, changeCartQuantity, deleteCartItem }: Props) => {
 			<div className={`cart row ${discount && `product-discount`}`}>
 				<a
 					className='cart-info col col-4'
-					href=''
+					href='/'
 				>
 					<h4>{name}</h4>
 					<img
 						className='cart-img'
 						src={image}
+						alt={name}
 					/>
 				</a>
 				<div className='btn-wrapper cart-action col col-4'>
@@ -56,7 +61,7 @@ const CartItem = ({ cart, changeCartQuantity, deleteCartItem }: Props) => {
 				<div className='cart-price col col-4'>
 					<div className='price-wrapper'>
 						<span className='product-price'>{price}</span>
-						{discount != 0 && (
+						{discount > 0 && (
 							<span className='product-price-discount'>{finalPrice}</span>
 						)}
 					</div>
@@ -71,5 +76,3 @@ const CartItem = ({ cart, changeCartQuantity, deleteCartItem }: Props) => {
 		</li>
 	);
 };
-
-export default CartItem;

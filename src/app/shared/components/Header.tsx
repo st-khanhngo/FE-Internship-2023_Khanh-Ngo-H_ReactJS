@@ -1,6 +1,5 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/shop-logo.png';
-import { CartProps } from '../../models/cart.interface';
 import Carts from '../../models/carts.entity';
 
 interface Props {
@@ -8,7 +7,7 @@ interface Props {
 	cartList: Carts;
 }
 
-const Header = ({ headerType, cartList }: Props) => {
+export const Header = ({ headerType, cartList }: Props) => {
 	return (
 		<header className={`header ${headerType}`}>
 			<div className='container flex'>
@@ -35,7 +34,7 @@ const Header = ({ headerType, cartList }: Props) => {
 						<li className='nav-item'>
 							<a
 								className='nav-link txt-primary'
-								href=''
+								href='/'
 							>
 								Men
 							</a>
@@ -43,7 +42,7 @@ const Header = ({ headerType, cartList }: Props) => {
 						<li className='nav-item'>
 							<a
 								className='nav-link txt-primary'
-								href=''
+								href='/'
 							>
 								Woman
 							</a>
@@ -51,7 +50,7 @@ const Header = ({ headerType, cartList }: Props) => {
 						<li className='nav-item'>
 							<a
 								className='nav-link txt-primary'
-								href=''
+								href='/'
 							>
 								Kids
 							</a>
@@ -61,7 +60,7 @@ const Header = ({ headerType, cartList }: Props) => {
 				<ul className='action-list flex'>
 					<li className='action-item'>
 						<a
-							href=''
+							href='/'
 							className='action-link'
 						>
 							<i className='icon icon-search icon-lg'></i>
@@ -84,7 +83,7 @@ const Header = ({ headerType, cartList }: Props) => {
 					</li>
 					<li className='action-item'>
 						<a
-							href=''
+							href='/'
 							className='action-link'
 						>
 							<i className='icon icon-profile icon-lg'></i>
@@ -96,5 +95,3 @@ const Header = ({ headerType, cartList }: Props) => {
 		</header>
 	);
 };
-
-export default Header;

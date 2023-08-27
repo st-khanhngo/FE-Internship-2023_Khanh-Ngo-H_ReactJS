@@ -1,18 +1,22 @@
-import Banner from '../../shared/components/Banner';
-import Highlight from '../../shared/components/Highlight';
-import Information from '../../shared/components/Information';
-import Subscribe from '../../shared/components/Subscribe';
-import Footer from '../../shared/components/Footer';
-import Header from '../../shared/components/Header';
+import { useEffect, useState } from 'react';
+
 import {
 	StorageKeys,
 	getLocalStorage,
+	saveToLocalStorage,
 } from '../../shared/services/localStorage';
-import { useEffect, useState } from 'react';
-import { ProductProps } from '../../models/product.interface';
 import { products } from '../../shared/services/data';
-import Product from '../../shared/components/Product';
-import { CartProps } from '../../models/cart.interface';
+import {
+	Banner,
+	Footer,
+	Header,
+	Highlight,
+	Information,
+	Product,
+	Subscribe,
+} from '../../shared/components';
+import ProductProps from '../../models/product.interface';
+import CartProps from '../../models/cart.interface';
 import Carts from '../../models/carts.entity';
 
 const Home = () => {
@@ -20,13 +24,13 @@ const Home = () => {
 	const cartList = new Carts(cart);
 
 	useEffect(() => {
-		localStorage.setItem('cart', JSON.stringify(cart));
+		saveToLocalStorage(StorageKeys.CART, cart);
 	}, [cart]);
 
 	const addToCart = (
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
 		product: ProductProps
-	) => {
+	): void => {
 		e.preventDefault();
 		const cartExisted = cart.find((item: any) => item.id === product.id);
 		if (!cartExisted) {
@@ -57,7 +61,7 @@ const Home = () => {
 							<h3 className='section-title'>Selected just for you</h3>
 							<a
 								className='section-link btn btn-outline-info'
-								href=''
+								href='/'
 							>
 								SHOW MORE
 							</a>

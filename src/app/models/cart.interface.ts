@@ -1,5 +1,5 @@
-import { ProductProps } from "./product.interface";
+import  ProductProps from "./product.interface";
 
-export interface CartProps extends ProductProps {
+export default interface CartProps extends ProductProps {
   quantity: number
 }
