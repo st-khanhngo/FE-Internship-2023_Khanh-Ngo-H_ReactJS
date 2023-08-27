@@ -3,7 +3,7 @@ export const StorageKeys = {
 }
 
 export function getLocalStorage(key: string) {
-  return JSON.parse(localStorage.getItem(key) || '[]')
+  return JSON.parse(localStorage.getItem(key) || '[]');
 }
 
 export function saveToLocalStorage<T>(key: string, data: T) {

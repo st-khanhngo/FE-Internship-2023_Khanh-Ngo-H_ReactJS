@@ -1,4 +1,3 @@
-import React from 'react';
 import logo from '../../../assets/images/shop-logo.png';
 
 export const Footer = () => {
