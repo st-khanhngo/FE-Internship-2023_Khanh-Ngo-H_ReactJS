@@ -1,9 +1,9 @@
 export interface ProductProps {
-	id: number;
-	name: string;
-	image: string;
-	discount: number;
-	price: number;
+  id: number;
+  name: string;
+  image: string;
+  discount: number;
+  price: number;
 }
 
 export class Product implements ProductProps {
