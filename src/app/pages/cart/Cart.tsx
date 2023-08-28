@@ -5,9 +5,9 @@ import {
 	getLocalStorage,
 	saveToLocalStorage,
 } from '../../shared/services/localStorage';
-import CartProps from '../../models/cart.interface';
-import Carts from '../../models/carts.entity';
+import Carts from '../../models/carts';
 import { CartItem, Header } from '../../shared/components';
+import { CartProps } from '../../models/cart';
 
 const Cart = () => {
 	const [cart, setCart] = useState(getLocalStorage(StorageKeys.CART));

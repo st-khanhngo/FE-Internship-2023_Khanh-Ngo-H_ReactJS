@@ -2,7 +2,8 @@ const infoList = [
 	{
 		id: 1,
 		title: 'Free Shipping',
-		desc: 'All purchases over $199 are eligible forfree shipping via USPS First ClassName Mail.',
+		desc:
+			'All purchases over $199 are eligible forfree shipping via USPS First ClassName Mail.',
 		icon: 'icon-freeship',
 	},
 	{
@@ -14,13 +15,15 @@ const infoList = [
 	{
 		id: 3,
 		title: 'Money-Back Guarantee',
-		desc: 'If an item arrived damaged or you have changed your mind, you can send it back for a full refund.',
+		desc:
+			'If an item arrived damaged or you have changed your mind, you can send it back for a full refund.',
 		icon: 'icon-guaranteed',
 	},
 	{
 		id: 4,
 		title: 'Finest Quality',
-		desc: 'Designed to last, each of our products hasbeen crafted with the finest materials.',
+		desc:
+			'Designed to last, each of our products hasbeen crafted with the finest materials.',
 		icon: 'icon-quality',
 	},
 ];
@@ -30,9 +33,7 @@ export const Information = () => {
 		<section className='section section-info'>
 			<div className='container'>
 				<div className='section-header'>
-					<h3 className='section-title txt-center'>
-						Why should you choose us?
-					</h3>
+					<h3 className='section-title txt-center'>Why should you choose us?</h3>
 				</div>
 				<ul className='info-list row'>
 					{infoList.map((info) => (

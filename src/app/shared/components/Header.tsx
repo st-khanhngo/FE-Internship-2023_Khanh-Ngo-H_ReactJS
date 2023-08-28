@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/shop-logo.png';
-import Carts from '../../models/carts.entity';
+import Carts from '../../models/carts';
 
 interface Props {
 	headerType: string;

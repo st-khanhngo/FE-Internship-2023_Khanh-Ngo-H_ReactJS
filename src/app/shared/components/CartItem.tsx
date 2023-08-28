@@ -1,5 +1,4 @@
-import Cart from '../../models/cart.entity';
-import CartProps from '../../models/cart.interface';
+import { Cart, CartProps } from '../../models/cart';
 
 interface Props {
 	cart: CartProps;

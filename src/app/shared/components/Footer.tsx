@@ -12,8 +12,8 @@ export const Footer = () => {
 							alt='Logo'
 						/>
 						<p className='footer-detail-desc'>
-							House My Brand designs clothing for the young, the old &everyone
-							in between – but most importantly, for the fashionable
+							House My Brand designs clothing for the young, the old &everyone in
+							between – but most importantly, for the fashionable
 						</p>
 						<ul className='social-list flex'>
 							<li className='social-item'>

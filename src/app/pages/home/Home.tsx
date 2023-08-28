@@ -15,9 +15,9 @@ import {
 	Product,
 	Subscribe,
 } from '../../shared/components';
-import ProductProps from '../../models/product.interface';
-import CartProps from '../../models/cart.interface';
-import Carts from '../../models/carts.entity';
+import Carts from '../../models/carts';
+import { ProductProps } from '../../models/product';
+import { CartProps } from '../../models/cart';
 
 const Home = () => {
 	const [cart, setCart] = useState(getLocalStorage(StorageKeys.CART));

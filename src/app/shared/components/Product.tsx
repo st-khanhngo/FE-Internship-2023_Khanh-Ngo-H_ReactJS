@@ -1,4 +1,4 @@
-import ProductProps from '../../models/product.interface';
+import { ProductProps } from '../../models/product';
 
 interface Props {
 	product: ProductProps;
@@ -21,9 +21,7 @@ export const Product = ({ product, addToCart }: Props) => {
 					className='product-link'
 					href='/'
 				>
-					{discount > 0 && (
-						<span className='badge badge-danger'>-{discount}%</span>
-					)}
+					{discount > 0 && <span className='badge badge-danger'>-{discount}%</span>}
 					<img
 						className='product-img'
 						src={image}

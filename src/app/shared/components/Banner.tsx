@@ -22,9 +22,7 @@ export const Banner = () => {
 								<i className='icon icon-freeship note-icon'></i>
 								<div className='note-content'>
 									<h4 className='note-title'>Free Shipping</h4>
-									<p className='note-desc txt-secondary'>
-										On purchase over $199
-									</p>
+									<p className='note-desc txt-secondary'>On purchase over $199</p>
 								</div>
 							</div>
 						</li>
