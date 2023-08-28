@@ -1,4 +1,4 @@
-import Cart from "./cart.entity";
+import { Cart } from "./cart";
 
 export default class Carts {
   cart : Cart[];

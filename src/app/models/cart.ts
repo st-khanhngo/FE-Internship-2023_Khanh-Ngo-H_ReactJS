@@ -1,6 +1,10 @@
-import CartProps from "./cart.interface";
+import { ProductProps } from "./product";
 
-class Cart implements CartProps {
+export interface CartProps extends ProductProps {
+  quantity: number;
+}
+
+export class Cart implements CartProps {
   quantity: number;
   id: number;
   name: string;
@@ -24,5 +28,3 @@ class Cart implements CartProps {
     return parseFloat((price * quantity).toFixed(2));
   }
 }
-
-export default Cart;

@@ -1,6 +1,12 @@
-import ProductProps from "./product.interface.js";
+export interface ProductProps {
+	id: number;
+	name: string;
+	image: string;
+	discount: number;
+	price: number;
+}
 
-class Product implements ProductProps {
+export class Product implements ProductProps {
   id: number;
   name: string;
   image: string;
@@ -16,5 +22,3 @@ class Product implements ProductProps {
     this.discount = discount || 0;
   }
 }
-
-export default Product
