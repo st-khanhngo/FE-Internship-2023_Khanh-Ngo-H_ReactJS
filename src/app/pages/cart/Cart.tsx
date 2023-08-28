@@ -1,46 +1,15 @@
-import { useEffect, useState } from 'react';
-
-import {
-  StorageKeys,
-  getLocalStorage,
-  saveToLocalStorage,
-} from '../../shared/services/localStorage';
-import Carts from '../../models/carts';
-import { CartItem, Header } from '../../shared/components';
+import { CartItem } from '../../shared/components';
 import { CartProps } from '../../models/cart';
 
-const Cart = () => {
-  const [cart, setCart] = useState(getLocalStorage(StorageKeys.CART));
-  const cartList = new Carts(cart);
+interface CartPageProps {
+  cart: CartProps[];
+  changeCartQuantity: Function;
+  deleteCartItem: Function;
+}
 
-  useEffect(() => {
-    saveToLocalStorage(StorageKeys.CART, cart);
-  }, [cart]);
-
-  const changeCartQuantity = (id: number, quantity: number): void => {
-    if (quantity > 0) {
-      setCart(
-        cart.map((item: CartProps) =>
-          item.id === id ? { ...item, quantity: quantity } : item
-        )
-      );
-    } else {
-      deleteCartItem(id);
-    }
-  };
-
-  const deleteCartItem = (id: number): void => {
-    if (window.confirm(`Do you want to delete this item?`)) {
-      setCart(cart.filter((item: CartProps) => item.id !== id));
-    }
-  };
-
+const Cart = ({ cart, changeCartQuantity, deleteCartItem }: CartPageProps) => {
   return (
     <>
-      <Header
-        headerType='header-cart'
-        cartList={cartList}
-      />
       <div className='cart-page'>
         <section className='section section-cart'>
           <div className='container'>
@@ -57,7 +26,7 @@ const Cart = () => {
               })}
             </ul>
             <p className='cart-total'>
-              TOTAL CART PRICE: ${cartList.cartTotalPrice()}
+              {/* TOTAL CART PRICE: ${cartList.cartTotalPrice()} */}
             </p>
           </div>
         </section>

@@ -24,7 +24,7 @@ export class Cart implements CartProps {
     this.finalPrice = discount ? (price - ((price * discount) / 100)) : price;
   }
 
-  itemTotalPrice = (price:number, quantity:number) => {
+  getItemTotalPrice = (price:number, quantity:number) => {
     return parseFloat((price * quantity).toFixed(2));
   }
 }

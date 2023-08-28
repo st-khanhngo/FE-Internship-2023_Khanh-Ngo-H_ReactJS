@@ -1,58 +1,21 @@
-import { useEffect, useState } from 'react';
-
-import {
-  StorageKeys,
-  getLocalStorage,
-  saveToLocalStorage,
-} from '../../shared/services/localStorage';
 import { products } from '../../shared/services/data';
 import {
   Banner,
   Footer,
-  Header,
   Highlight,
   Information,
   Product,
   Subscribe,
 } from '../../shared/components';
-import Carts from '../../models/carts';
-import { ProductProps } from '../../models/product';
-import { CartProps } from '../../models/cart';
 
-const Home = () => {
-  const [cart, setCart] = useState(getLocalStorage(StorageKeys.CART));
-  const cartList = new Carts(cart);
+interface HomeProps {
+  addToCart: Function;
+}
 
-  useEffect(() => {
-    saveToLocalStorage(StorageKeys.CART, cart);
-  }, [cart]);
-
-  const addToCart = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    product: ProductProps
-  ): void => {
-    e.preventDefault();
-    const cartExisted = cart.find((item: CartProps) => item.id === product.id);
-    if (!cartExisted) {
-      setCart([...cart, { ...product, quantity: 1 }]);
-    } else {
-      setCart(
-        cart.map((item: CartProps) =>
-          item.id === cartExisted.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        )
-      );
-    }
-  };
-
+const Home = ({ addToCart }: HomeProps) => {
   return (
     <main>
       <div className='home-page'>
-        <Header
-          headerType={''}
-          cartList={cartList}
-        />
         <Banner />
         <Highlight />
         <section className='section section-recommend'>

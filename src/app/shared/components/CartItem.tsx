@@ -19,7 +19,7 @@ export const CartItem = ({
     price,
     quantity,
     finalPrice,
-    itemTotalPrice,
+    getItemTotalPrice,
   } = new Cart(cart);
 
   return (
@@ -67,7 +67,7 @@ export const CartItem = ({
           <p className='price-total'>
             Total:{' '}
             <span className='product-price'>
-              {itemTotalPrice(finalPrice, quantity)}
+              {getItemTotalPrice(finalPrice, quantity)}
             </span>
           </p>
         </div>

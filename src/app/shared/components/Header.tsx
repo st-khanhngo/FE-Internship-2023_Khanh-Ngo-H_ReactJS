@@ -4,10 +4,10 @@ import Carts from '../../models/carts';
 
 interface Props {
   headerType: string;
-  cartList: Carts;
+  carts: Carts;
 }
 
-export const Header = ({ headerType, cartList }: Props) => {
+export const Header = ({ headerType, carts }: Props) => {
   return (
     <header className={`header ${headerType}`}>
       <div className='container flex'>
@@ -74,9 +74,9 @@ export const Header = ({ headerType, cartList }: Props) => {
             >
               <i className='icon icon-cart icon-lg'></i>
               <i className='icon icon-profile-sm'></i>
-              {cartList.cart.length > 0 && (
+              {carts.cart?.length > 0 && (
                 <span className='badge badge-danger badge-cart'>
-                  {cartList.cartTotalItem()}
+                  {carts.getCartTotalItem()}
                 </span>
               )}
             </Link>

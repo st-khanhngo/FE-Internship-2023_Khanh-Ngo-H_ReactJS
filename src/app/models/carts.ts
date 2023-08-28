@@ -7,11 +7,11 @@ export default class Carts {
     this.cart = cart.map(c => new Cart(c));
   }
 
-  cartTotalPrice = () => {
+  getCartTotalPrice = () => {
     return this.cart.reduce((total, item) => total + item.finalPrice * item.quantity, 0).toFixed(2);
   }
 
-  cartTotalItem = () => {
+  getCartTotalItem = () => {
     return this.cart.reduce((total, item) => total + item.quantity, 0);
   }
 }
