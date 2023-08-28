@@ -1,5 +1,6 @@
-import { CartItem } from '../../shared/components';
+import { Link } from 'react-router-dom';
 import { CartProps } from '../../models/cart';
+import { CartItem } from './components/CartItem';
 
 interface CartPageProps {
   cart: CartProps[];
@@ -14,6 +15,17 @@ const Cart = ({ cart, changeCartQuantity, deleteCartItem }: CartPageProps) => {
         <section className='section section-cart'>
           <div className='container'>
             <ul className='cart-list'>
+              {cart.length === 0 && (
+                <div className='section section-cart cart-empty'>
+                  <h3 className='section-header'>CART IS EMPTY</h3>
+                  <Link
+                    to='/'
+                    className='btn btn-primary'
+                  >
+                    Continue Shopping
+                  </Link>
+                </div>
+              )}
               {cart.map((item: CartProps) => {
                 return (
                   <CartItem

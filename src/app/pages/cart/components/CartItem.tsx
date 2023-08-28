@@ -1,4 +1,4 @@
-import { Cart, CartProps } from '../../models/cart';
+import { Cart, CartProps } from '../../../models/cart';
 
 interface Props {
   cart: CartProps;

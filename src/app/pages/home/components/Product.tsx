@@ -1,4 +1,4 @@
-import { ProductProps } from '../../models/product';
+import { ProductProps } from '../../../models/product';
 
 interface Props {
   product: ProductProps;

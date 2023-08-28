@@ -9,10 +9,10 @@ import {
   getLocalStorage,
   saveToLocalStorage,
 } from './app/shared/services/localStorage';
-import { Footer, Header } from './app/shared/components';
 import { routePaths } from './app.routes';
 import { ProductProps } from './app/models/product';
 import { CartProps } from './app/models/cart';
+import { Footer, Header } from './app/shared/components';
 
 function App() {
   const [cart, setCart] = useState(getLocalStorage(StorageKeys.CART));
@@ -88,14 +88,6 @@ function App() {
               />
             ))
         )}
-
-        {/* {routePaths.map((route) => (
-          <Route
-            key={route.id}
-            path={route.path}
-            element={<route.element addToCart={addToCart} />}
-          />
-        ))} */}
       </Routes>
       <Footer />
     </BrowserRouter>

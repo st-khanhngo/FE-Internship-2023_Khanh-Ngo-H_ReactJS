@@ -1,12 +1,6 @@
+import { Banner, Highlight, Information, Product, Subscribe } from '.';
+import { Footer } from '../../shared/components/Footer';
 import { products } from '../../shared/services/data';
-import {
-  Banner,
-  Footer,
-  Highlight,
-  Information,
-  Product,
-  Subscribe,
-} from '../../shared/components';
 
 interface HomeProps {
   addToCart: Function;
@@ -62,7 +56,6 @@ const Home = ({ addToCart }: HomeProps) => {
           </div>
         </section>
         <Subscribe />
-        <Footer />
       </div>
     </main>
   );
