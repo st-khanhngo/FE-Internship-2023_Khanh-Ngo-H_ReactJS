@@ -5,9 +5,9 @@ import Home from "./app/pages/home/Home";
 import Cart from "./app/pages/cart/Cart";
 import { useEffect, useState } from "react";
 import {
-	StorageKeys,
-	getLocalStorage,
-	saveToLocalStorage,
+  StorageKeys,
+  getLocalStorage,
+  saveToLocalStorage,
 } from "./app/shared/services/localStorage";
 import { routePaths } from "./app.routes";
 import { ProductProps } from "./app/models/product";
@@ -16,64 +16,64 @@ import CartList from "./app/models/cartList";
 import { CartItem } from "./app/models/cartItem";
 
 function App() {
-	const [cart, setCart] = useState<CartItem[]>(
-		getLocalStorage(StorageKeys.CART)
-	);
-	const cartList = new CartList(cart);
+  const [cart, setCart] = useState<CartItem[]>(
+    getLocalStorage(StorageKeys.CART)
+  );
+  const cartList = new CartList(cart);
 
-	useEffect(() => {
-		saveToLocalStorage(StorageKeys.CART, cart);
-	}, [cart]);
+  useEffect(() => {
+    saveToLocalStorage(StorageKeys.CART, cart);
+  }, [cart]);
 
-	const addToCart = (product: ProductProps): void => {
-		setCart(cartList.addToCart(product));
-	};
+  const addToCart = (product: ProductProps): void => {
+    setCart(cartList.addToCart(product));
+  };
 
-	const changeCartQuantity = (id: number, quantity: number): void => {
-		if (quantity > 0) {
-			setCart(cartList.changeCartQuantity(id, quantity));
-		} else {
-			deleteCartItem(id);
-		}
-	};
+  const changeCartQuantity = (id: number, quantity: number): void => {
+    if (quantity > 0) {
+      setCart(cartList.changeCartQuantity(id, quantity));
+    } else {
+      deleteCartItem(id);
+    }
+  };
 
-	const deleteCartItem = (id: number): void => {
-		if (window.confirm(`Do you want to delete this item?`)) {
-			setCart(cartList.deleteCartItem(id));
-		}
-	};
+  const deleteCartItem = (id: number): void => {
+    if (window.confirm(`Do you want to delete this item?`)) {
+      setCart(cartList.deleteCartItem(id));
+    }
+  };
 
-	return (
-		<BrowserRouter>
-			<Header cartList={cartList} />
-			<Routes>
-				{routePaths.map(
-					(route) =>
-						(route.element === Home && (
-							<Route
-								key={route.id}
-								path={route.path}
-								element={<route.element addToCart={addToCart} />}
-							/>
-						)) ||
-						(route.element === Cart && (
-							<Route
-								key={route.id}
-								path={route.path}
-								element={
-									<route.element
-										cartList={cartList}
-										changeCartQuantity={changeCartQuantity}
-										deleteCartItem={deleteCartItem}
-									/>
-								}
-							/>
-						))
-				)}
-			</Routes>
-			<Footer />
-		</BrowserRouter>
-	);
+  return (
+    <BrowserRouter>
+      <Header cartList={cartList} />
+      <Routes>
+        {routePaths.map(
+          (route) =>
+            (route.element === Home && (
+              <Route
+                key={route.id}
+                path={route.path}
+                element={<route.element addToCart={addToCart} />}
+              />
+            )) ||
+            (route.element === Cart && (
+              <Route
+                key={route.id}
+                path={route.path}
+                element={
+                  <route.element
+                    cartList={cartList}
+                    changeCartQuantity={changeCartQuantity}
+                    deleteCartItem={deleteCartItem}
+                  />
+                }
+              />
+            ))
+        )}
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
 }
 
 export default App;
