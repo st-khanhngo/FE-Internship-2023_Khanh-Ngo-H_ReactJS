@@ -1,5 +1,5 @@
-import { CartItem } from "./cartItem";
-import { Product } from "./product";
+import { CartItem } from './cartItem';
+import { Product } from './product';
 
 export default class CartList {
   cart: CartItem[];

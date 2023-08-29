@@ -1,4 +1,4 @@
-import { ProductProps } from "./product";
+import { ProductProps } from './product';
 
 export interface CartProps extends ProductProps {
   quantity: number;
@@ -21,10 +21,10 @@ export class CartItem implements CartProps {
     this.quantity = quantity;
     this.price = price;
     this.discount = discount || 0;
-    this.finalPrice = discount ? (price - ((price * discount) / 100)) : price;
+    this.finalPrice = discount ? price - (price * discount) / 100 : price;
   }
 
-  getItemTotalPrice = (price:number, quantity:number) => {
+  getItemTotalPrice = (price: number, quantity: number) => {
     return parseFloat((price * quantity).toFixed(2));
-  }
+  };
 }

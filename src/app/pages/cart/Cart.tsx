@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { CartProps } from "../../models/cartItem";
-import { ProductCart } from "./components/ProductCart";
-import CartList from "../../models/cartList";
+import { Link } from 'react-router-dom';
+import { CartProps } from '../../models/cartItem';
+import { ProductCart } from './components/ProductCart';
+import CartList from '../../models/cartList';
 
 interface CartPageProps {
   cartList: CartList;
@@ -16,10 +16,10 @@ const Cart = ({
 }: CartPageProps) => {
   return (
     <>
-      <div className='cart-page'>
-        <section className='section section-cart'>
-          <div className='container'>
-            <ul className='cart-list'>
+      <div className="cart-page">
+        <section className="section section-cart">
+          <div className="container">
+            <ul className="cart-list">
               {cartList.cart.map((item: CartProps) => {
                 return (
                   <ProductCart
@@ -32,17 +32,14 @@ const Cart = ({
               })}
             </ul>
             {cartList.cart.length === 0 ? (
-              <div className='section section-cart cart-empty'>
-                <h3 className='section-header'>CART IS EMPTY</h3>
-                <Link
-                  to='/'
-                  className='btn btn-primary'
-                >
+              <div className="section section-cart cart-empty">
+                <h3 className="section-header">CART IS EMPTY</h3>
+                <Link to="/" className="btn btn-primary">
                   Continue Shopping
                 </Link>
               </div>
             ) : (
-              <p className='cart-total'>
+              <p className="cart-total">
                 TOTAL CART PRICE: ${cartList.getCartTotalPrice()}
               </p>
             )}

@@ -27,24 +27,21 @@ const infoList = [
 
 export const Information = () => {
   return (
-    <section className='section section-info'>
-      <div className='container'>
-        <div className='section-header'>
-          <h3 className='section-title txt-center'>
+    <section className="section section-info">
+      <div className="container">
+        <div className="section-header">
+          <h3 className="section-title txt-center">
             Why should you choose us?
           </h3>
         </div>
-        <ul className='info-list row'>
+        <ul className="info-list row">
           {infoList.map((info) => (
-            <li
-              className='info-item col col-3 col-sm-12'
-              key={info.id}
-            >
-              <div className='info row'>
+            <li className="info-item col col-3 col-sm-12" key={info.id}>
+              <div className="info row">
                 <i className={`icon icon-info col-sm-3 ${info.icon}`}></i>
-                <div className='col col-sm-9'>
-                  <h4 className='info-title'>{info.title}</h4>
-                  <p className='info-desc txt-secondary'>{info.desc}</p>
+                <div className="col col-sm-9">
+                  <h4 className="info-title">{info.title}</h4>
+                  <p className="info-desc txt-secondary">{info.desc}</p>
                 </div>
               </div>
             </li>
