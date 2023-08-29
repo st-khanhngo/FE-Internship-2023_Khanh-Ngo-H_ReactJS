@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import logo from '../../../assets/images/shop-logo.png';
-import { CartItem } from '../../models/cartItem';
-import CartService from '../services/cartService';
+import logo from '../../../../assets/images/shop-logo.png';
+import { CartItem } from '../../../models/cartItem';
+import CartService from '../../services/cartService';
 
 interface HeaderProps {
   headerType: string;

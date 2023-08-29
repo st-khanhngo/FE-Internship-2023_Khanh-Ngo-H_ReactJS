@@ -11,9 +11,9 @@ import {
 } from './app/shared/services/localStorage';
 import { routePaths } from './app.routes';
 import { ProductItem } from './app/models/product';
-import { Footer, Header } from './app/shared/components';
 import { CartItem } from './app/models/cartItem';
 import CartService from './app/shared/services/cartService';
+import { Footer, Header } from './app/shared/components/layout';
 
 function App() {
   const [cart, setCart] = useState<CartItem[]>(
@@ -48,37 +48,30 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {routePaths.map(
-          (route) =>
-            (route.element === Home && (
-              <Route
-                key={route.id}
-                path={route.path}
-                element={
-                  <>
-                    <Header headerType="" cart={cart} />
-                    <route.element addToCart={addToCart} />
-                  </>
-                }
-              />
-            )) ||
-            (route.element === Cart && (
-              <Route
-                key={route.id}
-                path={route.path}
-                element={
-                  <>
-                    <Header headerType="header-cart" cart={cart} />
-                    <route.element
-                      cart={cart}
-                      changeCartQuantity={changeCartQuantity}
-                      deleteCartItem={deleteCartItem}
-                    />
-                  </>
-                }
-              />
-            ))
-        )}
+        {routePaths.map((route) => (
+          <Route
+            key={route.id}
+            path={route.path}
+            element={
+              (route.element === Home && (
+                <>
+                  <Header headerType="" cart={cart} />
+                  <route.element addToCart={addToCart} />
+                </>
+              )) ||
+              (route.element === Cart && (
+                <>
+                  <Header headerType="" cart={cart} />
+                  <route.element
+                    cart={cart}
+                    changeCartQuantity={changeCartQuantity}
+                    deleteCartItem={deleteCartItem}
+                  />
+                </>
+              ))
+            }
+          />
+        ))}
       </Routes>
       <Footer />
     </BrowserRouter>
