@@ -1,12 +1,14 @@
-import { Banner, Highlight, Information, Product, Subscribe } from '.';
-import { ProductProps } from '../../models/product';
+import { Banner, Highlight, Information, Subscribe } from './containers';
 import { products } from '../../shared/services/data';
+import { Product } from './components';
+import { ProductItem } from '../../models/product';
 
 interface HomeProps {
-  addToCart: (product: ProductProps) => void;
+  addToCart: (product: ProductItem) => void;
 }
 
 const Home = ({ addToCart }: HomeProps) => {
+  const productList = products.map((prod) => new ProductItem(prod));
   return (
     <main>
       <div className="home-page">
@@ -23,7 +25,7 @@ const Home = ({ addToCart }: HomeProps) => {
             <section className="section section-product">
               <div className="container">
                 <ul className="product-list row">
-                  {products.map((product) => (
+                  {productList.map((product) => (
                     <Product
                       key={product.id}
                       product={product}
@@ -42,7 +44,7 @@ const Home = ({ addToCart }: HomeProps) => {
               <h3 className="section-title txt-center">Products in today</h3>
             </div>
             <ul className="product-list row">
-              {products.map((product) => (
+              {productList.map((product) => (
                 <Product
                   key={product.id}
                   product={product}

@@ -5,7 +5,6 @@
   left: 0;
   padding: 42px 0;
   z-index: 1;
-  background-color: map-get($map: $color, $key: dark);
 
   .container {
     justify-content: space-between;
@@ -32,6 +31,7 @@
   }
 
   &-cart {
+    position: fixed;
     background-color: map-get($map: $color, $key: dark);
   }
 }

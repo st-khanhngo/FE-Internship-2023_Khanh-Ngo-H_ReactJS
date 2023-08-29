@@ -1,14 +1,17 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/shop-logo.png';
-import CartList from '../../models/cartList';
+import { CartItem } from '../../models/cartItem';
+import CartService from '../services/cartService';
 
 interface HeaderProps {
-  cartList: CartList;
+  headerType: string;
+  cart: CartItem[];
 }
 
-export const Header = ({ cartList }: HeaderProps) => {
+export const Header = ({ headerType, cart }: HeaderProps) => {
+  const cartService = new CartService();
   return (
-    <header className="header">
+    <header className={`header ${headerType}`}>
       <div className="container flex">
         <h1 className="header-logo">
           <Link to="/" className="header-link">
@@ -51,9 +54,9 @@ export const Header = ({ cartList }: HeaderProps) => {
             <Link to="/cart" className="action-link">
               <i className="icon icon-cart icon-lg"></i>
               <i className="icon icon-profile-sm"></i>
-              {cartList.cart.length > 0 && (
+              {cart.length > 0 && (
                 <span className="badge badge-danger badge-cart">
-                  {cartList.getCartTotalItem()}
+                  {cartService.getCartTotalItem(cart)}
                 </span>
               )}
             </Link>

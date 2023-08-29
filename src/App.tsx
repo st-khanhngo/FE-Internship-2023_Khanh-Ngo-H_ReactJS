@@ -1,37 +1,37 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import "./stylesheets/style.scss";
-import Home from "./app/pages/home/Home";
-import Cart from "./app/pages/cart/Cart";
-import { useEffect, useState } from "react";
+import './stylesheets/style.scss';
+import Home from './app/pages/home/Home';
+import Cart from './app/pages/cart/Cart';
+import { useEffect, useState } from 'react';
 import {
   StorageKeys,
   getLocalStorage,
   saveToLocalStorage,
-} from "./app/shared/services/localStorage";
-import { routePaths } from "./app.routes";
-import { ProductProps } from "./app/models/product";
-import { Footer, Header } from "./app/shared/components";
-import CartList from "./app/models/cartList";
-import { CartItem } from "./app/models/cartItem";
+} from './app/shared/services/localStorage';
+import { routePaths } from './app.routes';
+import { ProductItem } from './app/models/product';
+import { Footer, Header } from './app/shared/components';
+import { CartItem } from './app/models/cartItem';
+import CartService from './app/shared/services/cartService';
 
 function App() {
   const [cart, setCart] = useState<CartItem[]>(
     getLocalStorage(StorageKeys.CART)
   );
-  const cartList = new CartList(cart);
+  const cartService = new CartService();
 
   useEffect(() => {
     saveToLocalStorage(StorageKeys.CART, cart);
   }, [cart]);
 
-  const addToCart = (product: ProductProps): void => {
-    setCart(cartList.addToCart(product));
+  const addToCart = (product: ProductItem): void => {
+    setCart(cartService.addToCart(cart, product));
   };
 
   const changeCartQuantity = (id: number, quantity: number): void => {
     if (quantity > 0) {
-      setCart(cartList.changeCartQuantity(id, quantity));
+      setCart(cartService.changeCartQuantity(cart, id, quantity));
     } else {
       deleteCartItem(id);
     }
@@ -39,13 +39,12 @@ function App() {
 
   const deleteCartItem = (id: number): void => {
     if (window.confirm(`Do you want to delete this item?`)) {
-      setCart(cartList.deleteCartItem(id));
+      setCart(cartService.deleteCartItem(cart, id));
     }
   };
 
   return (
     <BrowserRouter>
-      <Header cartList={cartList} />
       <Routes>
         {routePaths.map(
           (route) =>
@@ -53,7 +52,12 @@ function App() {
               <Route
                 key={route.id}
                 path={route.path}
-                element={<route.element addToCart={addToCart} />}
+                element={
+                  <>
+                    <Header headerType="" cart={cart} />
+                    <route.element addToCart={addToCart} />
+                  </>
+                }
               />
             )) ||
             (route.element === Cart && (
@@ -61,11 +65,14 @@ function App() {
                 key={route.id}
                 path={route.path}
                 element={
-                  <route.element
-                    cartList={cartList}
-                    changeCartQuantity={changeCartQuantity}
-                    deleteCartItem={deleteCartItem}
-                  />
+                  <>
+                    <Header headerType="header-cart" cart={cart} />
+                    <route.element
+                      cart={cart}
+                      changeCartQuantity={changeCartQuantity}
+                      deleteCartItem={deleteCartItem}
+                    />
+                  </>
                 }
               />
             ))

@@ -1,37 +1,22 @@
 import { Link } from 'react-router-dom';
-import { CartProps } from '../../models/cartItem';
-import { ProductCart } from './components/ProductCart';
-import CartList from '../../models/cartList';
+import { CartItem } from '../../models/cartItem';
+import { ProductCart } from './components';
+import CartService from '../../shared/services/cartService';
 
 interface CartPageProps {
-  cartList: CartList;
+  cart: CartItem[];
   changeCartQuantity: (id: number, quantity: number) => void;
   deleteCartItem: (id: number) => void;
 }
 
-const Cart = ({
-  cartList,
-  changeCartQuantity,
-  deleteCartItem,
-}: CartPageProps) => {
+const Cart = ({ cart, changeCartQuantity, deleteCartItem }: CartPageProps) => {
+  const cartService = new CartService();
   return (
     <>
       <div className="cart-page">
         <section className="section section-cart">
           <div className="container">
-            <ul className="cart-list">
-              {cartList.cart.map((item: CartProps) => {
-                return (
-                  <ProductCart
-                    key={item.id}
-                    cart={item}
-                    changeCartQuantity={changeCartQuantity}
-                    deleteCartItem={deleteCartItem}
-                  />
-                );
-              })}
-            </ul>
-            {cartList.cart.length === 0 ? (
+            {cart.length === 0 ? (
               <div className="section section-cart cart-empty">
                 <h3 className="section-header">CART IS EMPTY</h3>
                 <Link to="/" className="btn btn-primary">
@@ -39,9 +24,23 @@ const Cart = ({
                 </Link>
               </div>
             ) : (
-              <p className="cart-total">
-                TOTAL CART PRICE: ${cartList.getCartTotalPrice()}
-              </p>
+              <>
+                <ul className="cart-list">
+                  {cart.map((item) => {
+                    return (
+                      <ProductCart
+                        key={item.id}
+                        cart={item}
+                        changeCartQuantity={changeCartQuantity}
+                        deleteCartItem={deleteCartItem}
+                      />
+                    );
+                  })}
+                </ul>
+                <p className="cart-total">
+                  TOTAL CART PRICE: ${cartService.getCartTotalPrice(cart)}
+                </p>
+              </>
             )}
           </div>
         </section>

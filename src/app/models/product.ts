@@ -6,7 +6,7 @@ export interface ProductProps {
   price: number;
 }
 
-export class Product implements ProductProps {
+export class ProductItem implements ProductProps {
   id: number;
   name: string;
   image: string;
@@ -21,4 +21,8 @@ export class Product implements ProductProps {
     this.price = price;
     this.discount = discount || 0;
   }
+
+  calcFinalPrice = () => {
+    return (this.price * (100 - this.discount)) / 100;
+  };
 }
