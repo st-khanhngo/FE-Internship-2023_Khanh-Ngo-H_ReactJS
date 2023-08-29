@@ -61,7 +61,7 @@ function App() {
               )) ||
               (route.element === Cart && (
                 <>
-                  <Header headerType="" cart={cart} />
+                  <Header headerType="header-cart" cart={cart} />
                   <route.element
                     cart={cart}
                     changeCartQuantity={changeCartQuantity}

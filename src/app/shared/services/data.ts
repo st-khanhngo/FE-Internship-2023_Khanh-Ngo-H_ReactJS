@@ -26,7 +26,7 @@ export const products = [
     image: product3,
     price: 79.99,
     discount: 0,
-    status: 1,
+    status: 0,
   },
   {
     id: 4,
