@@ -5,8 +5,8 @@ import CartList from "../../models/cartList";
 
 interface CartPageProps {
 	cartList: CartList;
-	changeCartQuantity: Function;
-	deleteCartItem: Function;
+	changeCartQuantity: (id: number, quantity: number) => void;
+	deleteCartItem: (id: number) => void;
 }
 
 const Cart = ({

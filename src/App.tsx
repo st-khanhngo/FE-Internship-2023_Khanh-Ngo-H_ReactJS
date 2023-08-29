@@ -13,20 +13,19 @@ import { routePaths } from "./app.routes";
 import { ProductProps } from "./app/models/product";
 import { Footer, Header } from "./app/shared/components";
 import CartList from "./app/models/cartList";
+import { CartItem } from "./app/models/cartItem";
 
 function App() {
-	const [cart, setCart] = useState(getLocalStorage(StorageKeys.CART));
+	const [cart, setCart] = useState<CartItem[]>(
+		getLocalStorage(StorageKeys.CART)
+	);
 	const cartList = new CartList(cart);
 
 	useEffect(() => {
 		saveToLocalStorage(StorageKeys.CART, cart);
 	}, [cart]);
 
-	const addToCart = (
-		e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-		product: ProductProps
-	): void => {
-		e.preventDefault();
+	const addToCart = (product: ProductProps): void => {
 		setCart(cartList.addToCart(product));
 	};
 
@@ -46,10 +45,7 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<Header
-				headerType={""}
-				cartList={cartList}
-			/>
+			<Header cartList={cartList} />
 			<Routes>
 				{routePaths.map(
 					(route) =>

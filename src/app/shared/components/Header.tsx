@@ -2,14 +2,13 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/images/shop-logo.png";
 import CartList from "../../models/cartList";
 
-interface Props {
-	headerType: string;
+interface HeaderProps {
 	cartList: CartList;
 }
 
-export const Header = ({ headerType, cartList }: Props) => {
+export const Header = ({ cartList }: HeaderProps) => {
 	return (
-		<header className={`header ${headerType}`}>
+		<header className='header'>
 			<div className='container flex'>
 				<h1 className='header-logo'>
 					<Link

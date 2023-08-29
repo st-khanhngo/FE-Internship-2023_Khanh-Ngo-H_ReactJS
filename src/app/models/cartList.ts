@@ -8,22 +8,23 @@ export default class CartList {
 		this.cart = cart.map((c) => new CartItem(c));
 	}
 
-	getCartTotalPrice = () => {
+	getCartTotalPrice = (): string => {
 		return this.cart
 			.reduce((total, item) => total + item.finalPrice * item.quantity, 0)
 			.toFixed(2);
 	};
 
-	getCartTotalItem = () => {
+	getCartTotalItem = (): number => {
 		return this.cart.reduce((total, item) => total + item.quantity, 0);
 	};
 
-	addToCart = (product: Product) => {
+	addToCart = (product: Product): CartItem[] => {
 		const cartExisted = this.cart.find(
 			(item: CartItem) => item.id === product.id
 		);
 		if (!cartExisted) {
-			return [...this.cart, { ...product, quantity: 1 }];
+			const newItem = new CartItem({ ...product, quantity: 1 });
+			return [...this.cart, newItem];
 		} else {
 			return this.cart.map((item: CartItem) =>
 				item.id === cartExisted.id
@@ -33,13 +34,13 @@ export default class CartList {
 		}
 	};
 
-	changeCartQuantity = (id: number, quantity: number) => {
+	changeCartQuantity = (id: number, quantity: number): CartItem[] => {
 		return this.cart.map((item: CartItem) =>
 			item.id === id ? { ...item, quantity: quantity } : item
 		);
 	};
 
-	deleteCartItem = (id: number) => {
+	deleteCartItem = (id: number): CartItem[] => {
 		return this.cart.filter((item: CartItem) => item.id !== id);
 	};
 }
