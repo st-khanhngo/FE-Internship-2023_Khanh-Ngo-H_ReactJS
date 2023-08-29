@@ -27,28 +27,28 @@ export const Header = ({ headerType, cart }: HeaderProps) => {
         <nav className="nav-main">
           <ul className="nav-list flex">
             <li className="nav-item">
-              <a className="nav-link txt-primary" href="/">
+              <Link className="nav-link txt-primary" to="/">
                 Men
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link txt-primary" href="/">
+              <Link className="nav-link txt-primary" to="/">
                 Woman
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link txt-primary" href="/">
+              <Link className="nav-link txt-primary" to="/">
                 Kids
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
         <ul className="action-list flex">
           <li className="action-item">
-            <a href="/" className="action-link">
+            <Link to="/" className="action-link">
               <i className="icon icon-search icon-lg"></i>
               <i className="icon icon-cart-sm"></i>
-            </a>
+            </Link>
           </li>
           <li className="action-item">
             <Link to="/cart" className="action-link">
@@ -62,10 +62,10 @@ export const Header = ({ headerType, cart }: HeaderProps) => {
             </Link>
           </li>
           <li className="action-item">
-            <a href="/" className="action-link">
+            <Link to="/" className="action-link">
               <i className="icon icon-profile icon-lg"></i>
               <i className="icon icon-menu-sm"></i>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

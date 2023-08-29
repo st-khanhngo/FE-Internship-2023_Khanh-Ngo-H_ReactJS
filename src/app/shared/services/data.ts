@@ -10,6 +10,7 @@ export const products = [
     image: product1,
     price: 119.99,
     discount: 30,
+    status: 1,
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ export const products = [
     image: product2,
     price: 119.99,
     discount: 0,
+    status: 1,
   },
   {
     id: 3,
@@ -24,6 +26,7 @@ export const products = [
     image: product3,
     price: 79.99,
     discount: 0,
+    status: 0,
   },
   {
     id: 4,
@@ -31,5 +34,6 @@ export const products = [
     image: product4,
     price: 119.99,
     discount: 0,
+    status: 1,
   },
 ];

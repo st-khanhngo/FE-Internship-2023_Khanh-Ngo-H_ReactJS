@@ -2,6 +2,7 @@ import { Banner, Highlight, Information, Subscribe } from './containers';
 import { products } from '../../shared/services/data';
 import { Product } from './components';
 import { ProductItem } from '../../models/product';
+import { Link } from 'react-router-dom';
 
 interface HomeProps {
   addToCart: (product: ProductItem) => void;
@@ -18,9 +19,9 @@ const Home = ({ addToCart }: HomeProps) => {
           <div className="container">
             <div className="section-header flex">
               <h3 className="section-title">Selected just for you</h3>
-              <a className="section-link btn btn-outline-info" href="/">
+              <Link className="section-link btn btn-outline-info" to="/">
                 SHOW MORE
-              </a>
+              </Link>
             </div>
             <section className="section section-product">
               <div className="container">

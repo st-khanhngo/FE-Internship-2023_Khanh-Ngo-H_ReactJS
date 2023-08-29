@@ -1,6 +1,6 @@
 import { ProductProps } from './product';
 
-export interface CartProps extends ProductProps {
+export interface CartProps extends Omit<ProductProps, 'status'> {
   quantity: number;
 }
 

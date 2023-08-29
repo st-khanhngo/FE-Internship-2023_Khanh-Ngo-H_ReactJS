@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { CartItem, CartProps } from '../../../models/cartItem';
 
 interface ProductCartProps {
@@ -25,10 +26,10 @@ export const ProductCart = ({
   return (
     <li className="cart-item">
       <div className={`cart row ${discount && 'product-discount'}`}>
-        <a className="cart-info col col-4" href="/">
+        <Link className="cart-info col col-4" to={`/${id}`}>
           <h4>{name}</h4>
           <img className="cart-img" src={image} alt={name} />
-        </a>
+        </Link>
         <div className="btn-wrapper cart-action col col-4">
           <button
             className="btn btn-change"

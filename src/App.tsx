@@ -26,7 +26,9 @@ function App() {
   }, [cart]);
 
   const addToCart = (product: ProductItem): void => {
-    setCart(cartService.addToCart(cart, product));
+    if (product.status) {
+      setCart(cartService.addToCart(cart, product));
+    }
   };
 
   const changeCartQuantity = (id: number, quantity: number): void => {

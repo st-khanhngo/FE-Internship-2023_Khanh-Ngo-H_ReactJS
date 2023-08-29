@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/shop-logo.png';
 
 export const Footer = () => {
@@ -13,29 +14,29 @@ export const Footer = () => {
             </p>
             <ul className="social-list flex">
               <li className="social-item">
-                <a className="social-link" href="/">
+                <Link className="social-link" to="/">
                   <i className="icon icon-facebook"></i>
-                </a>
+                </Link>
               </li>
               <li className="social-item">
-                <a className="social-link" href="/">
+                <Link className="social-link" to="/">
                   <i className="icon icon-twitter"></i>
-                </a>
+                </Link>
               </li>
               <li className="social-item">
-                <a className="social-link" href="/">
+                <Link className="social-link" to="/">
                   <i className="icon icon-linkedin"></i>
-                </a>
+                </Link>
               </li>
               <li className="social-item">
-                <a className="social-link" href="/">
+                <Link className="social-link" to="/">
                   <i className="icon icon-instagram"></i>
-                </a>
+                </Link>
               </li>
               <li className="social-item">
-                <a className="social-link" href="/">
+                <Link className="social-link" to="/">
                   <i className="icon icon-youtube"></i>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -45,29 +46,29 @@ export const Footer = () => {
               <p className="title">Shopping online</p>
               <ul className="footer-nav-list">
                 <li className="item">
-                  <a className="link" href="/">
+                  <Link className="link" to="/">
                     Order Status
-                  </a>
+                  </Link>
                 </li>
                 <li className="item">
-                  <a className="link" href="/">
+                  <Link className="link" to="/">
                     Shipping and Delivery
-                  </a>
+                  </Link>
                 </li>
                 <li className="item">
-                  <a className="link" href="/">
+                  <Link className="link" to="/">
                     Returns
-                  </a>
+                  </Link>
                 </li>
                 <li className="item">
-                  <a className="link" href="/">
+                  <Link className="link" to="/">
                     Order Status
-                  </a>
+                  </Link>
                 </li>
                 <li className="item">
-                  <a className="link" href="/">
+                  <Link className="link" to="/">
                     Order Status
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -75,29 +76,29 @@ export const Footer = () => {
               <p className="title">Information</p>
               <ul className="footer-nav-list">
                 <li className="item">
-                  <a className="link" href="/">
+                  <Link className="link" to="/">
                     Gift Cards
-                  </a>
+                  </Link>
                 </li>
                 <li className="item">
-                  <a className="link" href="/">
+                  <Link className="link" to="/">
                     Find a store
-                  </a>
+                  </Link>
                 </li>
                 <li className="item">
-                  <a className="link" href="/">
+                  <Link className="link" to="/">
                     Newsletter
-                  </a>
+                  </Link>
                 </li>
                 <li className="item">
-                  <a className="link" href="/">
+                  <Link className="link" to="/">
                     Become a mesmer
-                  </a>
+                  </Link>
                 </li>
                 <li className="item">
-                  <a className="link" href="/">
+                  <Link className="link" to="/">
                     Site feedback
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>

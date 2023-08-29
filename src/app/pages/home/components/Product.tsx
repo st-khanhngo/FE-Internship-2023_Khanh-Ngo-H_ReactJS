@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ProductItem } from '../../../models/product';
 
 interface ProductComponentProps {
@@ -6,18 +7,23 @@ interface ProductComponentProps {
 }
 
 export const Product = ({ product, addToCart }: ProductComponentProps) => {
-  const { name, image, discount, price, calcFinalPrice } = product;
+  const { name, image, discount, price, status, calcFinalPrice } = product;
+  console.log(status);
 
   return (
     <li className="product-item col col-3 col-sm-6">
-      <div className={`product ${discount > 0 && 'product-discount'}`}>
+      <div
+        className={`product ${discount > 0 && 'product-discount'} ${
+          status ? 'available' : 'unavailable'
+        }`}
+      >
         <button
           className="btn btn-primary btn-cart"
           onClick={() => addToCart(product)}
         >
-          ADD TO CART
+          {status ? 'ADD TO CART' : 'SOLD OUT'}
         </button>
-        <a className="product-link" href="/">
+        <Link className="product-link" to="/">
           {discount > 0 && (
             <span className="badge badge-danger">-{discount}%</span>
           )}
@@ -29,7 +35,7 @@ export const Product = ({ product, addToCart }: ProductComponentProps) => {
             )}
             <span className="product-price">{price}</span>
           </div>
-        </a>
+        </Link>
       </div>
     </li>
   );

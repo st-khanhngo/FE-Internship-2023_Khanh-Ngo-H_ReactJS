@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const Banner = () => {
   return (
     <section className="section section-banner">
@@ -8,9 +10,9 @@ export const Banner = () => {
             <span className="txt-primary">summer</span>
             collection
           </h2>
-          <a className="section-link" href="/">
+          <Link className="section-link" to="/">
             <i className="icon icon-arrow"></i>SHOP NOW
-          </a>
+          </Link>
         </div>
         <div className="banner-note">
           <ul className="note-list flex">

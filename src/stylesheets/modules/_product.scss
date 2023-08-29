@@ -51,21 +51,32 @@
     color: map-get($map: $color, $key: light);
     cursor: pointer;
   }
-  &:hover {
+
+  &.available:hover {
     .product-link {
+      cursor: default;
       opacity: 0.5;
     }
-    .btn {
+    .btn-primary {
       display: block;
+
+      &:hover {
+        border: 1px solid map-get($map: $color, $key: primary);
+        color: map-get($color, primary);
+        background-color: map-get($color, light);
+      }
     }
   }
 
   &.unavailable {
     .product-link {
       filter: contrast(25%);
+      cursor: default !important;
     }
 
     .btn {
+      display: block;
+      content: "SOLD OUT";
       cursor: default !important;
       background-color: map-get($color, price-discount);
     }
