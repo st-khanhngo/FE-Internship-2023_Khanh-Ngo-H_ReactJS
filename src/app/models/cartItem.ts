@@ -4,7 +4,7 @@ export interface CartProps extends ProductProps {
   quantity: number;
 }
 
-export class Cart implements CartProps {
+export class CartItem implements CartProps {
   quantity: number;
   id: number;
   name: string;

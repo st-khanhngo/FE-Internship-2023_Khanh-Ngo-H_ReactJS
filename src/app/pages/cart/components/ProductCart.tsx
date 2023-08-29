@@ -1,4 +1,4 @@
-import { Cart, CartProps } from '../../../models/cart';
+import { CartItem, CartProps } from '../../../models/cartItem';
 
 interface Props {
   cart: CartProps;
@@ -6,7 +6,7 @@ interface Props {
   deleteCartItem: Function;
 }
 
-export const CartItem = ({
+export const ProductCart = ({
   cart,
   changeCartQuantity,
   deleteCartItem,
@@ -20,7 +20,7 @@ export const CartItem = ({
     quantity,
     finalPrice,
     getItemTotalPrice,
-  } = new Cart(cart);
+  } = new CartItem(cart);
 
   return (
     <li className='cart-item'>

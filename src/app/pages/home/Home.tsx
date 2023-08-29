@@ -1,5 +1,4 @@
 import { Banner, Highlight, Information, Product, Subscribe } from '.';
-import { Footer } from '../../shared/components/Footer';
 import { products } from '../../shared/services/data';
 
 interface HomeProps {
