@@ -7,6 +7,29 @@
     }
   }
 
+  .cart-wrapper {
+    justify-content: space-between;
+  }
+
+  .total-wrapper {
+    position: sticky;
+    top: 170px;
+    right: 0;
+    height: 100px;
+    border: 2px solid map-get($map: $color, $key: primary);
+    border-radius: 16px;
+    padding: 18px 12px;
+    text-align: center;
+    .total-title {
+      display: block;
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid map-get($map: $color, $key: grey);
+    }
+    .total-price {
+      margin-top: 20px;
+    }
+  }
   .cart {
     padding: 20px 0;
     border-bottom: 1px solid map-get($map: $color, $key: border);

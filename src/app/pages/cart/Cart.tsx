@@ -24,8 +24,8 @@ const Cart = ({ cart, changeCartQuantity, deleteCartItem }: CartPageProps) => {
                 </Link>
               </div>
             ) : (
-              <>
-                <ul className="cart-list">
+              <div className="cart-wrapper row">
+                <ul className="cart-list col col-9">
                   {cart.map((item) => {
                     return (
                       <ProductCart
@@ -37,10 +37,13 @@ const Cart = ({ cart, changeCartQuantity, deleteCartItem }: CartPageProps) => {
                     );
                   })}
                 </ul>
-                <p className="cart-total">
-                  TOTAL CART PRICE: ${cartService.getCartTotalPrice(cart)}
-                </p>
-              </>
+                <div className="total-wrapper col col-2">
+                  <span className="total-title">TOTAL CART PRICE:</span>
+                  <span className="total-price">
+                    ${cartService.getCartTotalPrice(cart)}
+                  </span>
+                </div>
+              </div>
             )}
           </div>
         </section>
