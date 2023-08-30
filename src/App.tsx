@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './stylesheets/style.scss';
-import Home from './app/pages/home/Home';
-import Cart from './app/pages/cart/Cart';
+import Home from './app/pages/home/containers/Home';
+import Cart from './app/pages/cart/containers/Cart';
 import { useEffect, useState } from 'react';
 import {
   StorageKeys,

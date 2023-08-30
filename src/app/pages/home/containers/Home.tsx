@@ -1,7 +1,12 @@
-import { Banner, Highlight, Information, Subscribe } from './containers';
-import { products } from '../../shared/services/data';
-import { Product } from './components';
-import { ProductItem } from '../../models/product';
+import { products } from '../../../shared/services/data';
+import {
+  Banner,
+  Highlight,
+  Information,
+  Product,
+  Subscribe,
+} from '../components';
+import { ProductItem } from '../../../models/product';
 import { Link } from 'react-router-dom';
 
 interface HomeProps {

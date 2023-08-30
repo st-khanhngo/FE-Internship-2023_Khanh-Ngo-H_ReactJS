@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { CartItem } from '../../models/cartItem';
-import { ProductCart } from './components';
-import CartService from '../../shared/services/cartService';
+import { CartItem } from '../../../models/cartItem';
+import { ProductCart } from '../components';
+import CartService from '../../../shared/services/cartService';
 
 interface CartPageProps {
   cart: CartItem[];
