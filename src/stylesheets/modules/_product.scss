@@ -1,0 +1,97 @@
+.product {
+  position: relative;
+
+  &-link {
+    position: relative;
+  }
+  &-title {
+    margin-top: 8px;
+    font-weight: 300;
+  }
+
+  &.product-discount {
+    .badge-danger {
+      top: 5%;
+      left: 5%;
+    }
+
+    .product-price {
+      color: map-get($color, price);
+      text-decoration: line-through;
+    }
+  }
+
+  .price-wrapper {
+    justify-content: space-between;
+  }
+  &-price {
+    font-size: 20px;
+    &::before {
+      content: "$";
+    }
+  }
+
+  &-price-discount {
+    color: map-get($color, price-discount);
+    font-size: 20px;
+    &::before {
+      content: "$";
+    }
+  }
+
+  .btn-primary {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px 20px;
+
+    color: map-get($map: $color, $key: light);
+    cursor: pointer;
+  }
+
+  &.available:hover {
+    .product-link {
+      cursor: default;
+      opacity: 0.5;
+    }
+    .btn-primary {
+      display: block;
+
+      &:hover {
+        border: 1px solid map-get($map: $color, $key: primary);
+        color: map-get($color, primary);
+        background-color: map-get($color, light);
+      }
+    }
+  }
+
+  &.unavailable {
+    .product-link {
+      filter: contrast(25%);
+      cursor: default !important;
+    }
+
+    .btn {
+      display: block;
+      content: "SOLD OUT";
+      cursor: default !important;
+      background-color: map-get($color, price-discount);
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .product {
+    &-title {
+      font-size: 12px;
+    }
+
+    &-price,
+    &-price-discount {
+      font-size: 10px;
+    }
+  }
+}
