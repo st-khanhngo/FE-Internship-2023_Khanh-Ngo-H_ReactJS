@@ -1,14 +1,21 @@
 import { Link } from 'react-router-dom';
 import { ProductItem } from '../../../models/product';
+import { useDispatch } from 'react-redux';
+import { addCart } from '../../../redux/action';
 
 interface ProductComponentProps {
   product: ProductItem;
-  addToCart: (product: ProductItem) => void;
 }
 
-export const Product = ({ product, addToCart }: ProductComponentProps) => {
+export const Product = ({ product }: ProductComponentProps) => {
   const { name, image, discount, price, status, calcFinalPrice } = product;
-  console.log(status);
+  const dispatch = useDispatch();
+
+  const addToCart = (product: ProductItem): void => {
+    if (product.status) {
+      dispatch(addCart(product));
+    }
+  };
 
   return (
     <li className="product-item col col-3 col-sm-6">

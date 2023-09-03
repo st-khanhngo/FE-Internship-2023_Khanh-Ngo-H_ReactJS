@@ -9,11 +9,7 @@ import {
 import { ProductItem } from '../../../models/product';
 import { Link } from 'react-router-dom';
 
-interface HomeProps {
-  addToCart: (product: ProductItem) => void;
-}
-
-const Home = ({ addToCart }: HomeProps) => {
+const Home = () => {
   const productList = products.map((prod) => new ProductItem(prod));
   return (
     <main>
@@ -32,11 +28,7 @@ const Home = ({ addToCart }: HomeProps) => {
               <div className="container">
                 <ul className="product-list row">
                   {productList.map((product) => (
-                    <Product
-                      key={product.id}
-                      product={product}
-                      addToCart={addToCart}
-                    />
+                    <Product key={product.id} product={product} />
                   ))}
                 </ul>
               </div>
@@ -51,11 +43,7 @@ const Home = ({ addToCart }: HomeProps) => {
             </div>
             <ul className="product-list row">
               {productList.map((product) => (
-                <Product
-                  key={product.id}
-                  product={product}
-                  addToCart={addToCart}
-                />
+                <Product key={product.id} product={product} />
               ))}
             </ul>
           </div>

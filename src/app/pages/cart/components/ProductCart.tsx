@@ -1,17 +1,14 @@
 import { Link } from 'react-router-dom';
 import { CartItem, CartProps } from '../../../models/cartItem';
+import { useDispatch } from 'react-redux';
+import { deleteCart, updateCart } from '../../../redux/action';
+import { useRef, useState } from 'react';
 
 interface ProductCartProps {
-  cart: CartProps;
-  changeCartQuantity: (id: number, quantity: number) => void;
-  deleteCartItem: (id: number) => void;
+  cartItem: CartProps;
 }
 
-export const ProductCart = ({
-  cart,
-  changeCartQuantity,
-  deleteCartItem,
-}: ProductCartProps) => {
+export const ProductCart = ({ cartItem }: ProductCartProps) => {
   const {
     id,
     name,
@@ -21,7 +18,42 @@ export const ProductCart = ({
     quantity,
     finalPrice,
     getItemTotalPrice,
-  } = new CartItem(cart);
+  } = new CartItem(cartItem);
+  const [isEditItem, setIsEditItem] = useState(false);
+  const editInput = useRef<HTMLInputElement>(null);
+
+  const dispatch = useDispatch();
+
+  const changeCartQuantity = (id: number, quantity: number): void => {
+    if (quantity > 0) {
+      dispatch(updateCart(id, quantity));
+    } else {
+      deleteCartItem(id);
+    }
+  };
+
+  const deleteCartItem = (id: number): void => {
+    if (window.confirm(`Do you want to delete this item?`)) {
+      dispatch(deleteCart(id));
+    }
+  };
+
+  const toggleShowEdit = (): void => {
+    setIsEditItem(!isEditItem);
+  };
+
+  function handleEditQuantity(
+    event: React.KeyboardEvent<HTMLInputElement>
+  ): void {
+    if (event.key === 'Enter' && editInput) {
+      handleSave();
+    }
+  }
+
+  function handleSave(): void {
+    toggleShowEdit();
+    changeCartQuantity(id, Number.parseInt(editInput.current!.value.trim()));
+  }
 
   return (
     <li className="cart-item">
@@ -37,7 +69,20 @@ export const ProductCart = ({
           >
             -
           </button>
-          <span>{quantity}</span>
+          {isEditItem ? (
+            <input
+              className="input-quantity"
+              ref={editInput}
+              defaultValue={quantity}
+              onKeyUp={handleEditQuantity}
+              onBlur={handleSave}
+              autoFocus
+            ></input>
+          ) : (
+            <span className="cart-quantity" onClick={toggleShowEdit}>
+              {quantity}
+            </span>
+          )}
           <button
             className="btn btn-change"
             onClick={() => changeCartQuantity(id, quantity + 1)}

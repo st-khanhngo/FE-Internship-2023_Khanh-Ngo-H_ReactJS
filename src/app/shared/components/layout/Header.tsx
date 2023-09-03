@@ -1,17 +1,15 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../../assets/images/shop-logo.png';
-import { CartItem } from '../../../models/cartItem';
 import CartService from '../../services/cartService';
+import { useSelector } from 'react-redux';
+import { CartStateProps } from '../../../models/redux';
 
-interface HeaderProps {
-  headerType: string;
-  cart: CartItem[];
-}
-
-export const Header = ({ headerType, cart }: HeaderProps) => {
+export const Header = () => {
+  const cart = useSelector((state: CartStateProps) => state.cart);
   const cartService = new CartService();
+
   return (
-    <header className={`header ${headerType}`}>
+    <header className={`header cart`}>
       <div className="container flex">
         <h1 className="header-logo">
           <Link to="/" className="header-link">

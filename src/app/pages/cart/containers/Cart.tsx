@@ -1,16 +1,22 @@
 import { Link } from 'react-router-dom';
-import { CartItem } from '../../../models/cartItem';
 import { ProductCart } from '../components';
 import CartService from '../../../shared/services/cartService';
+import { useSelector } from 'react-redux';
+import { CartStateProps } from '../../../models/redux';
+import { ReactElement, useEffect } from 'react';
+import {
+  StorageKeys,
+  saveToLocalStorage,
+} from '../../../shared/services/localStorage';
 
-interface CartPageProps {
-  cart: CartItem[];
-  changeCartQuantity: (id: number, quantity: number) => void;
-  deleteCartItem: (id: number) => void;
-}
-
-const Cart = ({ cart, changeCartQuantity, deleteCartItem }: CartPageProps) => {
+const Cart = (): ReactElement => {
+  const cart = useSelector((state: CartStateProps) => state.cart);
   const cartService = new CartService();
+
+  useEffect(() => {
+    saveToLocalStorage(StorageKeys.CART, cart);
+  }, [cart]);
+
   return (
     <>
       <div className="cart-page">
@@ -27,14 +33,7 @@ const Cart = ({ cart, changeCartQuantity, deleteCartItem }: CartPageProps) => {
               <div className="cart-wrapper row">
                 <ul className="cart-list col col-9">
                   {cart.map((item) => {
-                    return (
-                      <ProductCart
-                        key={item.id}
-                        cart={item}
-                        changeCartQuantity={changeCartQuantity}
-                        deleteCartItem={deleteCartItem}
-                      />
-                    );
+                    return <ProductCart key={item.id} cartItem={item} />;
                   })}
                 </ul>
                 <div className="total-wrapper col col-2">
