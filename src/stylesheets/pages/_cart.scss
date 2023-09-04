@@ -49,6 +49,21 @@
       }
     }
 
+    .input-quantity {
+      max-width: 26px;
+      font-size: 16px;
+      text-align: center;
+      outline: none;
+      font-family: "Poppins";
+    }
+
+    &-quantity {
+      display: inline-block;
+      width: 26px;
+      font-size: 16px;
+      text-align: center;
+    }
+
     &-action {
       text-align: center;
       margin: auto 0;

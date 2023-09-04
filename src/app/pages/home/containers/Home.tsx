@@ -1,4 +1,7 @@
-import { products } from '../../../shared/services/data';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   Banner,
   Highlight,
@@ -7,14 +10,24 @@ import {
   Subscribe,
 } from '../components';
 import { ProductItem } from '../../../models/product';
-import { Link } from 'react-router-dom';
 
-interface HomeProps {
-  addToCart: (product: ProductItem) => void;
-}
+import { StateProps } from '../../../redux/store';
+import { getProducts } from '../../../redux/action';
 
-const Home = ({ addToCart }: HomeProps) => {
-  const productList = products.map((prod) => new ProductItem(prod));
+const Home = () => {
+  const products: ProductItem[] = useSelector(
+    (state: StateProps) => state.products.products
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
+  useEffect(() => {
+    dispatch(getProducts() as any);
+  }, [dispatch]);
+
   return (
     <main>
       <div className="home-page">
@@ -31,12 +44,8 @@ const Home = ({ addToCart }: HomeProps) => {
             <section className="section section-product">
               <div className="container">
                 <ul className="product-list row">
-                  {productList.map((product) => (
-                    <Product
-                      key={product.id}
-                      product={product}
-                      addToCart={addToCart}
-                    />
+                  {products.map((product: ProductItem) => (
+                    <Product key={product.id} product={product} />
                   ))}
                 </ul>
               </div>
@@ -50,12 +59,8 @@ const Home = ({ addToCart }: HomeProps) => {
               <h3 className="section-title txt-center">Products in today</h3>
             </div>
             <ul className="product-list row">
-              {productList.map((product) => (
-                <Product
-                  key={product.id}
-                  product={product}
-                  addToCart={addToCart}
-                />
+              {products.map((product: ProductItem) => (
+                <Product key={product.id} product={product} />
               ))}
             </ul>
           </div>
