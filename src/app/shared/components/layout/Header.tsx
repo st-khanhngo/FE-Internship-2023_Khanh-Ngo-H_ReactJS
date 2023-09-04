@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import logo from '../../../../assets/images/shop-logo.png';
 import CartService from '../../services/cartService';
 import { useSelector } from 'react-redux';
-import { CartStateProps } from '../../../models/redux';
+import { StateProps } from '../../../redux/store';
 
 export const Header = () => {
-  const cart = useSelector((state: CartStateProps) => state.cart);
+  const cart = useSelector((state: StateProps) => state.cart.cart);
   const cartService = new CartService();
 
   return (

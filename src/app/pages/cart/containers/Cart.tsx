@@ -2,17 +2,18 @@ import { Link } from 'react-router-dom';
 import { ProductCart } from '../components';
 import CartService from '../../../shared/services/cartService';
 import { useSelector } from 'react-redux';
-import { CartStateProps } from '../../../models/redux';
 import { ReactElement, useEffect } from 'react';
 import {
   StorageKeys,
   saveToLocalStorage,
 } from '../../../shared/services/localStorage';
+import { StateProps } from '../../../redux/store';
 
 const Cart = (): ReactElement => {
-  const cart = useSelector((state: CartStateProps) => state.cart);
-  const cartService = new CartService();
+  const cart = useSelector((state: StateProps) => state.cart.cart);
+  console.log(cart);
 
+  const cartService = new CartService();
   useEffect(() => {
     saveToLocalStorage(StorageKeys.CART, cart);
   }, [cart]);

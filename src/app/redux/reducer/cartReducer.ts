@@ -1,16 +1,19 @@
-import { ActionProps, CartStateProps } from './../models/redux';
-import { StorageKeys, getLocalStorage } from '../shared/services/localStorage';
-import { ADD_CART, DELETE_CART, UPDATE_CART } from './type';
-import { CartItem } from '../models/cartItem';
+import { ActionProps, CartState } from '../../models/redux';
+import {
+  StorageKeys,
+  getLocalStorage,
+} from '../../shared/services/localStorage';
+import { ADD_CART, DELETE_CART, UPDATE_CART } from '../type';
+import { CartItem } from '../../models/cartItem';
 
-const initialCart: CartStateProps = {
+const initialCart: CartState = {
   cart: getLocalStorage(StorageKeys.CART),
 };
 
 export const cartReducer = (
   state = initialCart,
   action: ActionProps
-): CartStateProps => {
+): CartState => {
   switch (action.type) {
     case ADD_CART:
       const cartExisted = state.cart.find(

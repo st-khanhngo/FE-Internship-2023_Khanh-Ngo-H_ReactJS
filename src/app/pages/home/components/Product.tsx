@@ -8,7 +8,9 @@ interface ProductComponentProps {
 }
 
 export const Product = ({ product }: ProductComponentProps) => {
-  const { name, image, discount, price, status, calcFinalPrice } = product;
+  const { name, image, discount, price, status, calcFinalPrice } =
+    new ProductItem(product);
+
   const dispatch = useDispatch();
 
   const addToCart = (product: ProductItem): void => {

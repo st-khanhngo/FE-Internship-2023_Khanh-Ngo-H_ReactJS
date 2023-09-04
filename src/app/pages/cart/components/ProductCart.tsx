@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { CartItem, CartProps } from '../../../models/cartItem';
 import { useDispatch } from 'react-redux';
-import { deleteCart, updateCart } from '../../../redux/action';
 import { useRef, useState } from 'react';
+import { deleteCart, updateCart } from '../../../redux/action';
 
 interface ProductCartProps {
   cartItem: CartProps;
