@@ -1,7 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../../../../assets/images/shop-logo.png';
-import CartService from '../../services/cartService';
 import { useSelector } from 'react-redux';
+
+import logo from '../../../../assets/images/shop-logo.png';
+
+import CartService from '../../services/cartService';
 import { StateProps } from '../../../redux/store';
 
 export const Header = () => {

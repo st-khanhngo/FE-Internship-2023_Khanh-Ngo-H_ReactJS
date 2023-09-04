@@ -1,8 +1,8 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import './stylesheets/style.scss';
-import { routePaths } from './app.routes';
 import { Footer, Header } from './app/shared/components/layout';
+import { routePaths } from './app.routes';
+import './stylesheets/style.scss';
 
 function App() {
   return (

@@ -1,10 +1,11 @@
 import { ActionProps, CartState } from '../../models/redux';
+import { ADD_CART, DELETE_CART, UPDATE_CART } from '../type';
+
+import { CartItem } from '../../models/cartItem';
 import {
   StorageKeys,
   getLocalStorage,
 } from '../../shared/services/localStorage';
-import { ADD_CART, DELETE_CART, UPDATE_CART } from '../type';
-import { CartItem } from '../../models/cartItem';
 
 const initialCart: CartState = {
   cart: getLocalStorage(StorageKeys.CART),

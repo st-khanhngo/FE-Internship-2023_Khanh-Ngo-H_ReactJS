@@ -1,11 +1,12 @@
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CartItem, CartProps } from '../../../models/cartItem';
 import { useDispatch } from 'react-redux';
-import { useEffect, useRef, useState } from 'react';
+
+import { CartItem } from '../../../models/cartItem';
 import { deleteCart, updateCart } from '../../../redux/action';
 
 interface ProductCartProps {
-  cartItem: CartProps;
+  cartItem: CartItem;
 }
 
 export const ProductCart = ({ cartItem }: ProductCartProps) => {
@@ -19,6 +20,7 @@ export const ProductCart = ({ cartItem }: ProductCartProps) => {
     finalPrice,
     getItemTotalPrice,
   } = new CartItem(cartItem);
+
   const [isEditItem, setIsEditItem] = useState(false);
   const editInput = useRef<HTMLInputElement>(null);
 

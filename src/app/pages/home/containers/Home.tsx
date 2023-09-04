@@ -1,3 +1,7 @@
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   Banner,
   Highlight,
@@ -6,10 +10,8 @@ import {
   Subscribe,
 } from '../components';
 import { ProductItem } from '../../../models/product';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { StateProps } from '../../../redux/store';
-import { useEffect } from 'react';
 import { getProducts } from '../../../redux/action';
 
 const Home = () => {
@@ -17,13 +19,14 @@ const Home = () => {
     (state: StateProps) => state.products.products
   );
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProducts() as any);
-  }, [dispatch]);
 
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
+
+  useEffect(() => {
+    dispatch(getProducts() as any);
+  }, [dispatch]);
 
   return (
     <main>
