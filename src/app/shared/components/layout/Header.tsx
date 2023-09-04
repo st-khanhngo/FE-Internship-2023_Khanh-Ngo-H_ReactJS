@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../../../assets/images/shop-logo.png';
 import CartService from '../../services/cartService';
 import { useSelector } from 'react-redux';
@@ -8,8 +8,9 @@ export const Header = () => {
   const cart = useSelector((state: StateProps) => state.cart.cart);
   const cartService = new CartService();
 
+  const location = useLocation().pathname.replace('/', '');
   return (
-    <header className={`header cart`}>
+    <header className={`header ${location}`}>
       <div className="container flex">
         <h1 className="header-logo">
           <Link to="/" className="header-link">

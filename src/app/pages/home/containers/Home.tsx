@@ -21,6 +21,10 @@ const Home = () => {
     dispatch(getProducts() as any);
   }, [dispatch]);
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
     <main>
       <div className="home-page">

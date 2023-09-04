@@ -11,12 +11,15 @@ import { StateProps } from '../../../redux/store';
 
 const Cart = (): ReactElement => {
   const cart = useSelector((state: StateProps) => state.cart.cart);
-  console.log(cart);
 
   const cartService = new CartService();
   useEffect(() => {
     saveToLocalStorage(StorageKeys.CART, cart);
   }, [cart]);
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   return (
     <>
